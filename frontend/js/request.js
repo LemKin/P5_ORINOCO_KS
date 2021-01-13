@@ -5,7 +5,6 @@ function afficherResponse (response) {
 
 fetch('http://localhost:3000/api/teddies')
     .then(afficherResponse)
-    //response => console.log(response)
 
 
 
