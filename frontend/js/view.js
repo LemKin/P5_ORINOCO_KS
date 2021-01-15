@@ -1,3 +1,4 @@
+/*
 //Image A : Norbert
 const imageA = document.querySelector('#pict_A');
 
@@ -61,3 +62,11 @@ fetch('http://localhost:3000/images/teddy_5.jpg')
   const objectURL = URL.createObjectURL(myBlob);
   imageE.src = objectURL;
 });
+*/
+
+const afficherLesProduits = (produit) => {
+    console.log(produit.name);
+    console.log(produit.price);
+    console.log(produit.description);
+    console.log("---");
+}

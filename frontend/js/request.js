@@ -1,3 +1,4 @@
+/*
 function afficherResponse (response) {
     console.log(response);
     return 
@@ -16,3 +17,10 @@ function donnees (response) {
 fetch('http://localhost:3000/api/teddies/5be9c8541c9d440000665243')
     .then (response => response.json())
     .then (ours => console.log(ours))
+    */
+
+const request = async (url) => {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+}

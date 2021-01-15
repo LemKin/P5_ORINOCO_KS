@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family: sans-serif;
     width: 800px;
+    color: #ffffff;
 }
 
 /* header */
@@ -90,9 +91,14 @@ main {
 }
 
 .contentBx {
-    background: #FCE4EC;
+    background: #263238;
     margin-top: -100px;
     width: 50%;
+}
+
+.container .contentBx:hover {
+    background: #FCE4EC;
+    color: #7E57C2;
 }
 
 .contentBx h2 {
@@ -117,12 +123,14 @@ main {
     height: 210px;
 }
 
-.container .card .contentBx h2 {
+.container .card .contentBx .h2 {
     position: relative;
     font-weight: 600;
     letter-spacing: 1px;
-    color: #263238;
+    color: #ffffff;
 }
+
+
 
 .container .card .contentBx .color {
     display: flex;
@@ -195,7 +203,7 @@ main {
 
 .container .card:hover .contentBx a {
     opacity: 1;
-    transform: translateY(0px);
+    transform: translateY(-3px);
     transition-delay: 0.75s;
 }
 
