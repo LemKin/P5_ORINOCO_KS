@@ -64,9 +64,35 @@ fetch('http://localhost:3000/images/teddy_5.jpg')
 });
 */
 
-const afficherLesProduits = (produit) => {
+function afficherProduit(produit) {
     console.log(produit.name);
     console.log(produit.price);
     console.log(produit.description);
     console.log("---");
+
+    const container = document.createElement("div");
+    container.className = "container";
+    const listeProduits = document.querySelector("#liste_produits");
+    listeProduits.append(container);
+
+    const card = document.createElement("div");
+    card.className = "card";
+    container.append(card);
+
+    const imgBx = document.createElement("div");
+    imgBx.className = "imgBx";
+    card.append(imgBx);
+
+    const img = document.createElement("img");
+    img.src = produit.imageUrl;
+    imgBx.append(img);
+
+    const contentBx = document.createElement("div");
+    contentBx.className = "contentBx";
+    card.append(contentBx);
+
+    const title = document.createElement("h3");
+    title.className = produit.name;
+    card.append(title);
 }
+
