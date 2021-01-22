@@ -70,6 +70,7 @@ function afficherProduit(produit) {
     console.log(produit.description);
     console.log("---");
 
+    /*
     const container = document.createElement("div");
     container.className = "container";
     const listeProduits = document.querySelector("#liste_produits");
@@ -83,16 +84,35 @@ function afficherProduit(produit) {
     imgBx.className = "imgBx";
     card.append(imgBx);
 
-    const img = document.createElement("img");
-    img.src = produit.imageUrl;
-    imgBx.append(img);
-
     const contentBx = document.createElement("div");
     contentBx.className = "contentBx";
     card.append(contentBx);
 
-    const title = document.createElement("h3");
-    title.className = produit.name;
-    card.append(title);
+    const img = document.createElement("img");
+    img.src = produit.imageUrl;
+    imgBx.append(img);
+
+    const object = document.createElement("h2");
+    object.className = produit.name;
+    container.append(object);
+*/
+
+    
+    const container = document.createElement("div");
+    container.innerHTML = `<div class="container">
+                                <div class="card">
+                                <div class="imgBx"><img src="${produit.imageUrl}"></div>
+                                    <div class="contentBx">
+                                        <h2>${produit.name}</h2>
+                                        <div class="color">
+                                            <p>${produit.description}</p>
+                                            <span>${produit.price/100 + " €"}</span>
+                                        </div>
+                                        <a href="#">Adopter</a>
+                                    </div>
+                                </div>
+                            </div>`
+    document.getElementById("liste_produits").appendChild(container);
+
 }
 

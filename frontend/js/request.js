@@ -7,9 +7,6 @@ function afficherResponse (response) {
 fetch('http://localhost:3000/api/teddies')
     .then(afficherResponse)
 
-
-
-
 //Fetch pour récupérer l'id du produit
 function donnees (response) {
     console.log(response);

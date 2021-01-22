@@ -89,7 +89,7 @@ main {
 .imgBx > img {
     width: 100%;
     margin-top: -200px;
-    opacity: 0.5;
+    opacity: 1;
 }
 
 .contentBx {
@@ -100,7 +100,11 @@ main {
 
 .container .contentBx:hover {
     background: #FCE4EC;
-    color: #7E57C2;
+    color: grey;
+}
+
+h2 {
+    margin-top: -50px;
 }
 
 .contentBx h2 {
@@ -129,7 +133,7 @@ main {
     position: relative;
     font-weight: 600;
     letter-spacing: 1px;
-    color: #ffffff;
+    color: grey;
 }
 
 
@@ -160,8 +164,8 @@ main {
 }
 
 .container .card .contentBx .color span {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 30px;
     text-align: center;
     line-height: 20px;
     font-size: 14px;
@@ -172,23 +176,9 @@ main {
     transition: 0.5s;
     color: #111;
     border-radius: 4px;
-}
-
-.container .card .contentBx .color span:hover {
     background: #9dbc28;
 }
 
-.container .card .contentBx .color span:nth-child(2) {
-    background: #9bdc28;
-}
-
-.container .card .contentBx .color span:nth-child(3) {
-    background: #03a9f4;
-}
-
-.container .card .contentBx .color span:nth-child(4) {
-    background: #e91e63;
-}
 
 .container .card .contentBx a {
     display: inline-block;
