@@ -1,70 +1,4 @@
-/*
-//Image A : Norbert
-const imageA = document.querySelector('#pict_A');
-
-fetch('http://localhost:3000/images/teddy_1.jpg')
-.then(function(response) {
-  return response.blob();
-})
-.then(function(myBlob) {
-  const objectURL = URL.createObjectURL(myBlob);
-  imageA.src = objectURL;
-});
-
-
-//Image B : Arnold
-const imageB = document.querySelector('#pict_B');
-
-fetch('http://localhost:3000/images/teddy_2.jpg')
-.then(function(response) {
-  return response.blob();
-})
-.then(function(myBlob) {
-  const objectURL = URL.createObjectURL(myBlob);
-  imageB.src = objectURL;
-});
-
-
-//Image C : Lenny & Carl
-const imageC = document.querySelector('#pict_C');
-
-fetch('http://localhost:3000/images/teddy_3.jpg')
-.then(function(response) {
-  return response.blob();
-})
-.then(function(myBlob) {
-  const objectURL = URL.createObjectURL(myBlob);
-  imageC.src = objectURL;
-});
-
-
-//Image D : Gustav
-const imageD = document.querySelector('#pict_D');
-
-fetch('http://localhost:3000/images/teddy_4.jpg')
-.then(function(response) {
-  return response.blob();
-})
-.then(function(myBlob) {
-  const objectURL = URL.createObjectURL(myBlob);
-  imageD.src = objectURL;
-});
-
-
-//Image E : Garfunkel
-const imageE = document.querySelector('#pict_E');
-
-fetch('http://localhost:3000/images/teddy_5.jpg')
-.then(function(response) {
-  return response.blob();
-})
-.then(function(myBlob) {
-  const objectURL = URL.createObjectURL(myBlob);
-  imageE.src = objectURL;
-});
-*/
-
-function afficherProduit(produit) {
+const afficherProduit = (produit) => {
     console.log(produit.name);
     console.log(produit.price);
     console.log(produit.description);
@@ -105,14 +39,56 @@ function afficherProduit(produit) {
                                     <div class="contentBx">
                                         <h2>${produit.name}</h2>
                                         <div class="color">
-                                            <p>${produit.description}</p>
+                                            <p class="description">${produit.description}</p>
                                             <span>${produit.price/100 + " €"}</span>
                                         </div>
-                                        <a href="#">Adopter</a>
+                                        <a href="produit.html?selected=${produit._id}">Adopter</a>
                                     </div>
                                 </div>
                             </div>`
-    document.getElementById("liste_produits").appendChild(container);
+    document.getElementById("liste_produits").append(container);
+
+
 
 }
 
+
+const selected = (produit) => {
+    console.log(produit.name);
+    console.log(produit.price);
+    console.log(produit.description);
+    console.log("---");
+
+const container = document.createElement("div");
+container.innerHTML = `<div class="container">
+                            <div class="card">
+                            <div class="imgBx"><img src="${produit.imageUrl}"></div>
+
+                                <div class="contentBx">
+
+                                <h2>${produit.name}</h2>
+                                <form>
+                                    <div class="color">
+                                        <p class="description">${produit.description}</p>
+                                        <span>${produit.price/100 + " €"}</span>
+                                    </div>
+                                </form>
+                                </div>
+                            </div>
+
+                            <div class="option">
+                                <label>Couleur</label>
+                                <select id="selectColor">${produit.colors}</select>
+                                <label>Quantité</label>
+                                <input type="number" id="selectQte" name="Quantité" min="1" value="1"></input>
+                                <label>Total</label>
+                                <text id="total">${produit.price/100 + " €"*'#selectQte'}</text>
+                            </div>
+
+                            <div class="buttonCmd">
+                                <a href="produit.html?selected=${produit._id}">Ajouter au panier</a>
+                            </div>
+                            
+                        </div>`
+document.getElementById("selected").append(container);
+}
