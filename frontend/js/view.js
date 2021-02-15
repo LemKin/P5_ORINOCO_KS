@@ -39,7 +39,7 @@ const afficherProduit = (produit) => {
                                 <div class="imgBx">
                                         <img src="${produit.imageUrl}"></div>
                                     <div class="contentBx">
-                                        <h2>${produit.name}</h2>
+                                        <h2 class="produit_name">${produit.name}</h2>
                                         <div class="color">
                                             <p class="description">${produit.description}</p>
                                             <span>${produit.price/100 + " €"}</span>
@@ -61,7 +61,7 @@ const detailProduit = (produit) => {
     console.log(produit.description);
     console.log("---");
 
-    document.title = '${produit.name}';
+    document.title = produit.name;
 
 
     let optionColor = ''
@@ -106,6 +106,9 @@ container.innerHTML = `<div class="container">
                             
                         </div>`
 document.getElementById("detailProduit").append(container);
+document.querySelector("#selectQte").addEventListener("change",(event) => {
+    document.querySelector("#total").innerHTML = monnaie(event.target.value * produit.price/100);
+})
 }
 
 const monnaie = (prix) => {
@@ -114,4 +117,3 @@ const monnaie = (prix) => {
     return frCurrency
 }
 
-let selectQte = document.getElementById("selectQte").value;

@@ -3,7 +3,6 @@ body {
     padding: 0;
     font-family: sans-serif;
     width: 800px;
-    color: #ffffff;
 }
 
 /* header */
@@ -130,10 +129,8 @@ main {
     height: 210px;
 }
 
-.container .card .contentBx .h2 {
-    position: relative;
-    font-weight: 600;
-    letter-spacing: 1px;
+.produit_name {
+    color: #ffffff;
 }
 
 .container .card .contentBx .color {
@@ -146,16 +143,10 @@ main {
     opacity: 1;
     visibility: visible;
     transition-delay: 0.5s;
+    color: #ffffff;
 }
 
-.container .card .contentBx .color h3 {
-    color: #263238;
-    font-weight: 300;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-right: 10px;
-}
+
 
 .container .card .contentBx .color span {
     line-height: 20px;
