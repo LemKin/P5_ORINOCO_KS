@@ -74,8 +74,7 @@ main {
 }
 
 .card {
-    display: flex;
-    justify-content: center;
+    width: 100%;
 }
 
 .container .card:after {
@@ -171,7 +170,7 @@ main {
 }
 
 
-.container .card .contentBx a {
+.container .card .contentBx .btn {
     display: inline-block;
     padding: 10px 20px;
     background: #FCE4EC;
@@ -184,7 +183,7 @@ main {
     transition: 0.5s;
 }
 
-.container .card:hover .contentBx a {
+.container .card:hover .contentBx .btn {
     opacity: 1;
     transform: translateY(-3px);
     transition-delay: 0.75s;

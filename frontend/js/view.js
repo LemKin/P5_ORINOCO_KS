@@ -35,7 +35,7 @@ const afficherProduit = (produit) => {
     
     const container = document.createElement("div");
     container.innerHTML = `<div class="container">
-                                <div class="card">
+                            <a href="produit.html?detailProduit=${produit._id}"><div class="card">
                                 <div class="imgBx">
                                         <img src="${produit.imageUrl}"></div>
                                     <div class="contentBx">
@@ -44,9 +44,9 @@ const afficherProduit = (produit) => {
                                             <p class="description">${produit.description}</p>
                                             <span>${produit.price/100 + " €"}</span>
                                         </div>
-                                        <a href="produit.html?detailProduit=${produit._id}">Adopter</a>
+                                        <a class="btn" href="produit.html?detailProduit=${produit._id}">Adopter</a>
                                     </div>
-                                </div>
+                                </div></a>
                             </div>`
     document.getElementById("liste_produits").append(container);
 
