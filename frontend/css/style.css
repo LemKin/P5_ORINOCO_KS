@@ -212,20 +212,41 @@ main {
 }
 
 .option {
-    background-color: #7E57C2;
-    height: 50px;
+    height: 30px;
     display: flex;
+    justify-content: space-between;
     margin-top: 10px;
+    color: #ffffff;
+}
+
+.option_A {
+    background-color: #7E57C2;
+    display: flex;
+    justify-content: center;
+    padding: 7px;
+}
+
+.option_B {
+    background-color: #7E57C2;
+    padding: 7px;
+}
+
+.option_C {
+    background-color: #7E57C2;
+    padding: 7px;
+}
+
+.title_label {
+    justify-content: center;
 }
 
 #selectColor {
-    margin-top: 25px;
+    margin-top: ;
     width: 100px;
 }
 
 #selectQte {
-    margin-top: 25px;
-    width: 40px;
+    width: 30px;
 }
 
 #total {
@@ -237,7 +258,73 @@ main {
     display: flex;
     justify-content: center;
     padding: 10px 20px;
-    width: 150px;
+    width: auto;
+    background: #FCE4EC;
+    margin-top: -30px;
+    margin-bottom: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #263238;
+    transform: translateY(50px);
+    transition: 0.5s;
+}
+
+
+/*ERROR*/
+.msg_error {
+    background-color: #263238;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/*PANIER*/
+.slot_panier {
+    width: 400px;
+    height: 200px;
+    border: 2px solid #263238;
+    overflow: hidden;
+    display: flex;
+}
+
+.illu_panier {
+    width: 200px;
+    height: 200px;
+}
+
+.detail_panier {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    background-color: #FCE4EC;
+}
+
+.corbeille {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    height: 22px;
+    background-color: #263238;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 4px;
+    right: 25%;
+    top: 29.5%;
+}
+
+.price_total {
+    text-align: center;
+    font-size: large;
+}
+
+.btn_nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    width: auto;
     background: #FCE4EC;
     margin-top: -30px;
     margin-bottom: 50px;
