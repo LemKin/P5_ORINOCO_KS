@@ -1,10 +1,10 @@
 /* CATALOGUE */
 
 const afficherProduit = (produit) => {
-  console.log(produit.name);
-  console.log(produit.price);
-  console.log(produit.description);
-  console.log("---");
+  //console.log(produit.name);
+  //console.log(produit.price);
+  //console.log(produit.description);
+  //console.log("---");
 
   /*
     const container = document.createElement("div");
@@ -68,10 +68,10 @@ const afficherProduit = (produit) => {
 /* PRODUIT */
 
 const detailProduit = (produit) => {
-  console.log(produit.name);
-  console.log(produit.price);
-  console.log(produit.description);
-  console.log("---");
+  //console.log(produit.name);
+  //console.log(produit.price);
+  //console.log(produit.description);
+  //console.log("---");
 
   document.title = produit.name;
 
@@ -119,16 +119,12 @@ const detailProduit = (produit) => {
                                 </div>
                                 <div class="option_C">
                                     <label class="title_label">Total : </label>
-                                    <text id="total">${monnaie(
-                                      produit.price / 100
-                                    )}</text>
+                                    <text id="total">${monnaie(produit.price / 100)}</text>
                                 </div>
                             </div>
 
                             <button class="buttonCmd" id="btnPanier">
-                                <a href="produit.html?detailProduit=${
-                                  produit._id
-                                }">Ajouter au panier</a>
+                                <a href="produit.html?detailProduit=${produit._id}">Ajouter au panier</a>
                             </button>
                             
                         </div>`;
@@ -140,8 +136,46 @@ const detailProduit = (produit) => {
         });
         document.querySelector("#btnPanier").addEventListener("click", (event) => {
             event.preventDefault()
-            localStorage.setItem("panier","salut panier");
-            console.log("salut");
+            console.log(produit);
+            //localStorage.setItem('panier',JSON.stringify(produit));
+
+            let panier = JSON.parse(localStorage.getItem('panier'));
+            if(panier === null) {
+                panier=[]
+            }
+
+            panier.push(produit);
+            console.log(panier);
+
+            localStorage.setItem('panier',JSON.stringify(panier));
+            
+
+
+            //localStorage.setItem("panier",JSON.parse(localStorage.getItem('panier')));
+            //console.log("nb_ligne(s)_panier");
+            //localStorage.getItem("panier",JSON.stringify(localStorage.setItem('panier')));
+
+
+            /*let produit = JSON.stringify(detailProduit);
+            window.localStorage.setItem('detailProduit', produit);
+            let test = JSON.parse(window.localStorage.getItem('detailProduit'));*/
+            
+            
+
+            //lire la clée panier dans le localStorage
+            //parser le JSON du panier
+            //ajouter le produit sélectionné dans le tableau
+            //stringify le JSON
+            //écrit dans le localStorage - setItem
+
+            /*TEST
+            const produit = {id:"5beaacd41c9d440000a57d97"};
+            const couleur = 'Beige';
+            const quantite = 2;
+            const panier = JSON.parse(localStorage.getItem('panier'))
+            const cleProduit = `${produit.id}/${couleur}`
+            */
+
         });
 };
 
@@ -159,10 +193,10 @@ const monnaie = (prix) => {
 /* PANIER */
 
 const detailPanier = (produit) => {
-  console.log(produit.name);
-  console.log(produit.price);
-  console.log(produit.description);
-  console.log("---");
+  //console.log(produit.name);
+  //console.log(produit.price);
+  //console.log(produit.description);
+  //console.log("---");
 
   const container = document.createElement("div");
   container.innerHTML = `<div class="container">
@@ -171,10 +205,10 @@ const detailPanier = (produit) => {
                                     <img src="${produit.imageUrl}">
                                 </div>
                                 <div class="detail_panier">
-                                    <h3 class="produit_name">${produit.name}</h3>
+                                    <h2 class="produit_name">${produit.name}</h2>
                                     <div class="detail_color">Couleur : </div>
                                     <div class="detail_qte">Quantité : </div>
-                                    <div class="detail_price">Total : </div>
+                                    <div class="detail_price">${monnaie(produit.price / 100)}</div>
                                 </div>
                                 <span class="corbeille"><i class="fas fa-trash-alt"></i></span>
                             </div>
