@@ -280,21 +280,26 @@ main {
 
 /*PANIER*/
 .slot_panier {
-    width: 400px;
-    height: 200px;
+    position: relative;
+    width: 440px;
+    height: 150px;
     border: 2px solid #263238;
     overflow: hidden;
     display: flex;
 }
 
 .illu_panier {
-    width: 200px;
-    height: 200px;
+    width: 230px;
+    height: 150px;
+}
+
+.illu_panier img {
+    width: 230px;
 }
 
 .detail_panier {
-    width: 200px;
-    height: 200px;
+    width: 240px;
+    height: 150px;
     padding: 10px;
     background-color: #FCE4EC;
 }
@@ -306,13 +311,30 @@ main {
     align-items: center;
     width: 22px;
     height: 22px;
+    cursor: pointer;
     background-color: #263238;
     color: #ffffff;
     border-radius: 50%;
     padding: 4px;
-    right: 25%;
-    top: 29.5%;
+    right: 5px;
+    top: 115px;
 }
+
+.corbeille:hover:after,
+.corbeille:focus:after {
+    content: attr(aria-label);
+    position: absolute;
+    top: -2.4em;
+    left: 50%;
+    transform: translateX(-150%);
+    z-index: 1;
+    white-space: nowrap;
+    padding: 5px 14px;
+    background: #263238;
+    color: #ffffff;
+    border-radius: 4px;
+    font-size: 1.2rem;
+  }
 
 .price_total {
     text-align: center;
@@ -333,3 +355,25 @@ main {
     transform: translateY(50px);
     transition: 0.5s;
 }
+
+.pan_name {
+    color: #7E57C2;
+}
+
+  
+  
+  .picto-item:hover:after,
+  .picto-item:focus:after {
+    content: attr(aria-label);  /* on affiche aria-label */
+    position: absolute;
+    top: -2.4em;
+    left: 50%;
+      transform: translateX(-50%); /* on centre horizontalement  */
+    z-index: 1; /* pour s'afficher au dessus des éléments en position relative */
+    white-space: nowrap;  /* on interdit le retour à la ligne*/
+    padding: 5px 14px;
+    background: #413219;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1.2rem;
+  }

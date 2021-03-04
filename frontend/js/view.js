@@ -88,9 +88,7 @@ const detailProduit = (produit) => {
   const container = document.createElement("div");
   container.innerHTML = `<div class="container">
                             <div class="card">
-                            <div class="imgBx"><img src="${
-                              produit.imageUrl
-                            }"></div>
+                            <div class="imgBx"><img src="${produit.imageUrl}"></div>
 
                                 <div class="contentBx">
 
@@ -100,9 +98,7 @@ const detailProduit = (produit) => {
                                         <p class="description">${
                                           produit.description
                                         }</p>
-                                        <span>${monnaie(
-                                          produit.price / 100
-                                        )}</span>
+                                        <span>${monnaie(produit.price / 100)}</span>
                                     </div>
                                 </form>
                                 </div>
@@ -124,7 +120,7 @@ const detailProduit = (produit) => {
                             </div>
 
                             <button class="buttonCmd" id="btnPanier">
-                                <a href="produit.html?detailProduit=${produit._id}">Ajouter au panier</a>
+                              <a href="produit.html?detailProduit=${produit._id}">Ajouter au panier</a>
                             </button>
                             
                         </div>`;
@@ -139,12 +135,15 @@ const detailProduit = (produit) => {
             console.log(produit);
             //localStorage.setItem('panier',JSON.stringify(produit));
 
-            let panier = JSON.parse(localStorage.getItem('panier'));
-            if(panier === null) {
-                panier=[]
+            const panier = getPanier();
+
+            const produitPanier = {
+              ...produit,
+              couleur : document.querySelector("#selectColor").value,
+              quantite : document.querySelector("#selectQte").value
             }
 
-            panier.push(produit);
+            panier.push(produitPanier);
             console.log(panier);
 
             localStorage.setItem('panier',JSON.stringify(panier));
@@ -205,16 +204,28 @@ const detailPanier = (produit) => {
                                     <img src="${produit.imageUrl}">
                                 </div>
                                 <div class="detail_panier">
-                                    <h2 class="produit_name">${produit.name}</h2>
-                                    <div class="detail_color">Couleur : </div>
-                                    <div class="detail_qte">Quantité : </div>
-                                    <div class="detail_price">${monnaie(produit.price / 100)}</div>
+                                    <h2 class="pan_name">${produit.name}</h2>
+                                    <div class="detail_color">Couleur : ${produit.couleur}</div>
+                                    <div class="detail_qte">Quantité : ${produit.quantite}</div>
+                                    <div class="detail_price">${monnaie((produit.price / 100)*produit.quantite)}</div>
                                 </div>
-                                <span class="corbeille"><i class="fas fa-trash-alt"></i></span>
+                                <a class="corbeille" id="remove" href="#" aria-label="Supprimer l'article"><i class="fas fa-trash-alt"></i></a>
                             </div>
-                        </div>
-                        <div class="price_total">Prix total : </div>
-                        <button class="btn_nav">Continuer mes achats</button>
-                        <button class="btn_nav">Valider ma commande</button>`;
+                        </div>`;
   document.getElementById("detailPanier").append(container);
 };
+
+const getPanier = () => {
+  let panier = JSON.parse(localStorage.getItem('panier'));
+  if(panier === null) {
+      panier=[]
+  }
+  return panier;
+}
+
+let btnRemove = document.querySelector('#remove');
+let output = document.querySelector('slot_panier');
+
+btnRemove.addEventListener('click', () => {
+  document.removeEventListener('mouseout', handleEvent);
+})
