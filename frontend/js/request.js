@@ -6,3 +6,11 @@ const request = async (url) => {
         let data = await response.json();
         return data;
 }
+
+const getPanier = () => {
+    let panier = JSON.parse(localStorage.getItem('panier'));
+    if(panier === null) {
+        panier=[]
+    }
+    return panier;
+  }

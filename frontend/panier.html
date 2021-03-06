@@ -26,24 +26,24 @@
                 <div id="detailPanier"></div>
 
                 <!-- DÉBUT TEST COMPO HTML
-                    <div class="container">
-                        <div class="slot_panier">
-                            <div class="illu_panier">
-                                <img src="${produit.imageUrl}">
-                            </div>
-                            <div class="detail_panier">
-                                <h3 class="produit_name">${produit.name}</h3>
-                                <div class="detail_color">Couleur : </div>
-                                <div class="detail_qte">Quantité : </div>
-                                <div class="detail_price">Total : </div>
-                            </div>
-                            <span class="corbeille"><i class="fas fa-trash-alt"></i></span>
+                
+                <div class="container">
+                    <div class="slot_panier">
+                        <div class="illu_panier">
+                            <img src="${produit.imageUrl}">
                         </div>
+                        <div class="detail_panier">
+                            <h2 class="pan_name">${produit.name}</h2>
+                            <div class="detail_color">Couleur : ${produit.couleur}</div>
+                            <div class="detail_qte">Quantité : ${produit.quantite}</div>
+                            <div class="detail_price">${monnaie((produit.price / 100)*produit.quantite)}</div>
+                        </div>
+                        <a class="corbeille" id="remove" href="#" aria-label="Supprimer l'article"><i class="fas fa-trash-alt"></i></a>
                     </div>
-                    <div class="price_total">Prix total : </div>
-                    <button class="btn_nav">Continuer mes achats</button><button class="btn_nav">Valider ma commande</button>
+                </div>
 
                 FIN TEST COMPO HTML -->
+
                 <button class="btn_nav"><a href="index.html">Continuer mes achats</a></button>
                 <button class="btn_nav"><a href="confirmation.html">Valider ma commande</a></button>
                 

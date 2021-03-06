@@ -147,6 +147,9 @@ const detailProduit = (produit) => {
             console.log(panier);
 
             localStorage.setItem('panier',JSON.stringify(panier));
+
+            //redirection
+            document.location.href="panier.html"; 
             
 
 
@@ -213,19 +216,9 @@ const detailPanier = (produit) => {
                             </div>
                         </div>`;
   document.getElementById("detailPanier").append(container);
+
+  //remove
+  //document.querySelector("").addEventListener("click", (event) =>
 };
 
-const getPanier = () => {
-  let panier = JSON.parse(localStorage.getItem('panier'));
-  if(panier === null) {
-      panier=[]
-  }
-  return panier;
-}
 
-let btnRemove = document.querySelector('#remove');
-let output = document.querySelector('slot_panier');
-
-btnRemove.addEventListener('click', () => {
-  document.removeEventListener('mouseout', handleEvent);
-})
