@@ -24,32 +24,43 @@
                 <h2 class="compl">Ton Panier</h2>
 
                 <div id="detailPanier"></div>
+                <div id="liste_panier"></div>
 
-                <!-- DÉBUT TEST COMPO HTML
-                
-                <div class="container">
-                    <div class="slot_panier">
-                        <div class="illu_panier">
-                            <img src="${produit.imageUrl}">
-                        </div>
-                        <div class="detail_panier">
-                            <h2 class="pan_name">${produit.name}</h2>
-                            <div class="detail_color">Couleur : ${produit.couleur}</div>
-                            <div class="detail_qte">Quantité : ${produit.quantite}</div>
-                            <div class="detail_price">${monnaie((produit.price / 100)*produit.quantite)}</div>
-                        </div>
-                        <a class="corbeille" id="remove" href="#" aria-label="Supprimer l'article"><i class="fas fa-trash-alt"></i></a>
+                <!-- FORMULAIRE -->
+                <div class="droite">
+                    <div class="box">
+                        <form>
+                            <h2 class="formulaire">Formulaire</h2>
+
+                            <div class="inputBox">
+                                <input type="text" name="name" required="">
+                                <label>Nom & Prénom</label>
+                            </div>
+                            <div class="inputBox">
+                                <input type="text" name="email" required="">
+                                <label>E-mail</label>
+                            </div>
+                            <div class="inputBox">
+                                <input type="text" name="text" required="">
+                                <label>Adresse, numéro et rue</label>
+                            </div>
+                            <div class="inputBox">
+                                <input type="text" name="text" required="">
+                                <label>Ville et code postal</label>
+                            </div>
+                        </form>
+                    </div>
+             <!-- FORMULAIRE END -->
+                    <div class="resume_panier">
+                        <h4 class="total_price">Montant total de la commande : </h4> 
+                        <button class="btn_nav"><a href="index.html">Continuer mes achats</a></button>
+                        <button class="btn_nav"><a href="confirmation.html">Valider ma commande</a></button>
                     </div>
                 </div>
-
-                FIN TEST COMPO HTML -->
-
-                <button class="btn_nav"><a href="index.html">Continuer mes achats</a></button>
-                <button class="btn_nav"><a href="confirmation.html">Valider ma commande</a></button>
                 
             </section>
         </main>
-        <footer class="banner foot">
+        <!-- <footer class="banner foot"> -->
 
         </footer>
         <script src="js/request.js"></script>

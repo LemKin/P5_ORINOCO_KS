@@ -146,7 +146,8 @@ const detailProduit = (produit) => {
             panier.push(produitPanier);
             console.log(panier);
 
-            localStorage.setItem('panier',JSON.stringify(panier));
+            setPanier(panier);
+
 
             //redirection
             document.location.href="panier.html"; 
@@ -194,28 +195,72 @@ const monnaie = (prix) => {
 
 /* PANIER */
 
-const detailPanier = (produit) => {
+const detailPanier = (produit, indexProduit) => {
   //console.log(produit.name);
   //console.log(produit.price);
   //console.log(produit.description);
   //console.log("---");
 
-  const container = document.createElement("div");
-  container.innerHTML = `<div class="container">
-                            <div class="slot_panier">
-                                <div class="illu_panier">
-                                    <img src="${produit.imageUrl}">
-                                </div>
-                                <div class="detail_panier">
-                                    <h2 class="pan_name">${produit.name}</h2>
-                                    <div class="detail_color">Couleur : ${produit.couleur}</div>
-                                    <div class="detail_qte">Quantité : ${produit.quantite}</div>
-                                    <div class="detail_price">${monnaie((produit.price / 100)*produit.quantite)}</div>
-                                </div>
-                                <a class="corbeille" id="remove" href="#" aria-label="Supprimer l'article"><i class="fas fa-trash-alt"></i></a>
-                            </div>
-                        </div>`;
-  document.getElementById("detailPanier").append(container);
+  const containerPanier = document.createElement('div');
+  containerPanier.className = 'container_panier';
+  const listePanier = document.querySelector("#liste_panier");
+  listePanier.append(containerPanier);
+
+    const slotPanier = document.createElement('div');
+    slotPanier.className = "slot_panier";
+    containerPanier.append(slotPanier);
+
+      const illuPanier = document.createElement('div');
+      illuPanier.className = "illu_panier";
+      slotPanier.append(illuPanier);
+
+        const img = document.createElement('img');
+        img.src = produit.imageUrl;
+        illuPanier.append(img);
+
+          const detailPanier = document.createElement('div');
+          detailPanier.className = "detail_panier";
+          slotPanier.append(detailPanier);
+
+            const panName = document.createElement('h2');
+            panName.className = "pan_name";
+            panName.append(produit.name);
+            detailPanier.append(panName);
+
+            const detailColor = document.createElement('div');
+            detailColor.className = "detail_color";
+            detailColor.append("Couleur : " + produit.couleur);
+            detailPanier.append(detailColor);
+
+            const detailQte = document.createElement('div');
+            detailQte.className = "detail_qte";
+            detailQte.append("Quantité : " + produit.quantite);
+            detailPanier.append(detailQte);
+
+            const detailPrice = document.createElement('div');
+            detailPrice.className = "detail_price";
+            detailPrice.append("Prix : " + monnaie((produit.price / 100)*produit.quantite));
+            detailPanier.append(detailPrice);
+
+          const corbeille = document.createElement('a');
+          corbeille.className = "corbeille";
+          corbeille.href = "#";
+          corbeille.ariaLabel = "Supprimer l'article";
+          slotPanier.append(corbeille);
+
+            const icone = document.createElement('i');
+            icone.className = "fas fa-trash-alt";
+            corbeille.append(icone);
+
+  corbeille.addEventListener("click", event => {
+    event.preventDefault();
+    console.log("suppresion produit", indexProduit);
+    const panier = getPanier();
+    panier.splice(indexProduit, 1);
+    setPanier(panier);
+    document.location.reload();
+    
+  })
 
   //remove
   //document.querySelector("").addEventListener("click", (event) =>

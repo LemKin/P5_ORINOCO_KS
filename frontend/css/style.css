@@ -279,27 +279,39 @@ main {
 
 
 /*PANIER*/
+
+.droite {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 10%;
+}
+
+.container_panier {
+    padding-top: 10px;
+    margin-left: -200px;
+    /*background: #7E57C2;*/
+}
+
 .slot_panier {
     position: relative;
-    width: 440px;
-    height: 150px;
+    width: 300px;
+    height: 90px;
     border: 2px solid #263238;
     overflow: hidden;
     display: flex;
 }
 
 .illu_panier {
-    width: 230px;
-    height: 150px;
+    width: 150px;
 }
 
 .illu_panier img {
-    width: 230px;
+    width: 150px;
 }
 
 .detail_panier {
-    width: 240px;
-    height: 150px;
+    width: 150px;
     padding: 10px;
     background-color: #FCE4EC;
 }
@@ -317,7 +329,7 @@ main {
     border-radius: 50%;
     padding: 4px;
     right: 5px;
-    top: 115px;
+    bottom: 5px;
 }
 
 .corbeille:hover:after,
@@ -358,12 +370,16 @@ main {
 
 .pan_name {
     color: #7E57C2;
+    font-size: 0.9em;
+    margin-top: 0px;
 }
 
+.detail_color, .detail_qte, .detail_price {
+    font-size: 0.8em;
+}
   
-  
-  .picto-item:hover:after,
-  .picto-item:focus:after {
+.picto-item:hover:after,
+.picto-item:focus:after {
     content: attr(aria-label);  /* on affiche aria-label */
     position: absolute;
     top: -2.4em;
@@ -376,4 +392,76 @@ main {
     color: #fff;
     border-radius: 4px;
     font-size: 1.2rem;
-  }
+}
+
+/*FORMULAIRE*/
+
+.formulaire {
+    margin-top: -10px;
+    font-size: 1.5em;
+    color: #FCE4EC;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background: #7E57C2;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0.75;
+}
+
+.box .inputBox {
+    position: relative;
+}
+
+.box .inputBox input {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 10px 0;
+    border: none;
+    border-bottom: 1px solid #FCE4EC;
+    font-size: 1.2em;
+    outline: 0;
+    color: #FCE4EC;
+    background: 0 0;
+}
+
+.box .inputBox label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 8px 0;
+    transition: .5s;
+    pointer-events: none;
+    color: #FCE4EC;
+}
+
+.box .inputBox input:focus~label,
+.box .inputBox input:valid~label {
+    top: -23px;
+    left: 0;
+    font-size: .9em;
+    color: #ffffff;
+}
+
+.box input[type=submit] {
+    padding: 10px 20px;
+    border: 1px solid rgba(0,0,0,.08);
+    border-bottom-color: rgba(0,0,0,.1);
+    border-radius: 5px;
+    text-shadow: 0 1px 0 rgba(0,0,1,.1);
+    font-size: large;
+    font-weight: 700;
+    outline: 0;
+    color: #fff;
+    background: 0 0;
+    box-shadow: 0 1px 3px rgba(0,0,1,.25), inset 0 1px 0 0 rgba(255,255,255,.15);
+    cursor: pointer;
+}
+
+.resume_panier {
+    display: flex;
+    flex-direction: column;
+}
