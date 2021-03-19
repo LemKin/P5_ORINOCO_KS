@@ -275,22 +275,23 @@ main {
     color: #ffffff;
     text-align: center;
     padding: 20px;
+    margin-top: -50px;
 }
 
 
 /*PANIER*/
 
-.droite {
+#bloc_form_resume {
     display: flex;
     flex-direction: column;
     position: absolute;
-    right: 10%;
+    margin-left: 100px;
+    top: 190px;
 }
 
 .container_panier {
     padding-top: 10px;
-    margin-left: -200px;
-    /*background: #7E57C2;*/
+    margin-left: -250px;
 }
 
 .slot_panier {
@@ -300,6 +301,7 @@ main {
     border: 2px solid #263238;
     overflow: hidden;
     display: flex;
+    border-radius: 7px;
 }
 
 .illu_panier {
@@ -341,31 +343,19 @@ main {
     transform: translateX(-150%);
     z-index: 1;
     white-space: nowrap;
-    padding: 5px 14px;
+    padding: 7px 18px;
     background: #263238;
+    opacity: 0.7;
     color: #ffffff;
     border-radius: 4px;
     font-size: 1.2rem;
+    margin-top: 20px;
+    margin-left: 50px;
   }
 
 .price_total {
     text-align: center;
     font-size: large;
-}
-
-.btn_nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    width: auto;
-    background: #FCE4EC;
-    margin-top: -30px;
-    margin-bottom: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    color: #263238;
-    transform: translateY(50px);
-    transition: 0.5s;
 }
 
 .pan_name {
@@ -400,6 +390,8 @@ main {
     margin-top: -10px;
     font-size: 1.5em;
     color: #FCE4EC;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .box {
@@ -412,56 +404,95 @@ main {
     opacity: 0.75;
 }
 
-.box .inputBox {
-    position: relative;
+.form-control {
+    width: 260px;
+    display: flex;
+    margin-bottom: 10px;
 }
 
-.box .inputBox input {
-    width: 100%;
-    margin-bottom: 30px;
-    padding: 10px 0;
-    border: none;
-    border-bottom: 1px solid #FCE4EC;
-    font-size: 1.2em;
-    outline: 0;
-    color: #FCE4EC;
-    background: 0 0;
+fieldset {
+    margin-top: 15px;
 }
 
-.box .inputBox label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 8px 0;
-    transition: .5s;
-    pointer-events: none;
-    color: #FCE4EC;
+legend {
+    background: #FCE4EC;
+    width: 260px;
+    text-transform: uppercase;
+    text-align: center;
 }
 
-.box .inputBox input:focus~label,
-.box .inputBox input:valid~label {
-    top: -23px;
-    left: 0;
-    font-size: .9em;
+label {
     color: #ffffff;
 }
 
-.box input[type=submit] {
-    padding: 10px 20px;
-    border: 1px solid rgba(0,0,0,.08);
-    border-bottom-color: rgba(0,0,0,.1);
-    border-radius: 5px;
-    text-shadow: 0 1px 0 rgba(0,0,1,.1);
-    font-size: large;
-    font-weight: 700;
-    outline: 0;
-    color: #fff;
-    background: 0 0;
-    box-shadow: 0 1px 3px rgba(0,0,1,.25), inset 0 1px 0 0 rgba(255,255,255,.15);
-    cursor: pointer;
-}
+/*RESUME*/
 
-.resume_panier {
+#resume_panier {
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
+    padding: 7px;
+    width: 300px;
+    border-radius: 7px;
+    border: 2px solid #263238;
+}
+
+#total_price {
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.remove_panier {
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.vide_panier {
+    position: relative;
+    padding: 7px;
+    background: #263238;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1em;
+}
+
+.btn {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn_nav {
+    width: 140px;
+    padding: 5px;
+    border-radius: 5px;
+    background: #FCE4EC;
+    margin-top: -30px;
+    margin-bottom: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #263238;
+    transform: translateY(50px);
+    text-align: center;
+}
+
+/*CONFIRMATION*/
+
+.confirm {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 10px 0px 10px 0px;
+}
+
+.congrat {
+    background: #7E57C2;
+    text-align: center;
+}
+
+.recap {
+    background: #7E57C2;
+    opacity: 0.5;
+    text-align: center;
 }

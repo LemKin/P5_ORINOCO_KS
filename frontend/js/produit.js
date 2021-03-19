@@ -7,7 +7,7 @@ const chargerProduit = async () => {
         //console.log(produit);
         detailProduit(produit);
         } catch  (error) {
-            document.getElementById("detailProduit").innerHTML = "<div class='msg_error'>Mauvais chargement du Produit</div>";
+            document.getElementById("detailProduit").innerHTML = "<div class='msg_error'>Échec du chargement du Produit</div>";
         }
 }
 

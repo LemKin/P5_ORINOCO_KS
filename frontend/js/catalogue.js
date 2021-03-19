@@ -6,7 +6,7 @@ const chargerCatalogue = async () => {
             afficherProduit(produit);
         })
     } catch (error) {
-        document.getElementById("liste_produits").innerHTML = "<div class='msg_error'>Mauvais chargement du Catalogue</div>";
+        document.getElementById("liste_produits").innerHTML = "<div class='msg_error'>Échec du chargement du Catalogue</div>";
     }
 }
 

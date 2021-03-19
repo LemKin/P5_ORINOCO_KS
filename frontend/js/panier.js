@@ -1,11 +1,14 @@
 const chargerPanier = async () => {
 
-        const panier = getPanier();
-        panier.forEach((produit, indexProduit) => {
-                detailPanier(produit, indexProduit);
-            })
-        //panier.forEach(detailPanier) //idem arrow du dessus
-        console.log(panier);
+        afficherPanier();
+
+        document.querySelector(".vide_panier").addEventListener("click", () => {
+                viderPanier();
+                afficherPanier();
+        })
+        let formValid = document.getElementById('bouton_envoi');
+        formValid.addEventListener('click', validation);
 }
 
 chargerPanier();
+

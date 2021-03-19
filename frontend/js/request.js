@@ -19,4 +19,7 @@ const setPanier = (panier) => {
     localStorage.setItem('panier',JSON.stringify(panier));
 }
 
-  //localStorage.removeItem(panier); //supp panier
+
+const viderPanier = () => {
+    localStorage.removeItem('panier');
+}

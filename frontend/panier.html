@@ -15,7 +15,7 @@
                 <a href="index.html" class="logo"><img src="img/logo_orinoco-D.png" alt="logo orinoco" /></a>
                 <nav class="menu">
                     <a href="index.html">Produits</a>
-                    <a href="confirmation.html">Valider</a>
+                    <a href="panier.html">Panier</a>
                 </nav>
         </header>
         <main>
@@ -23,38 +23,56 @@
                 <h1 class="title">Orinours</h1>
                 <h2 class="compl">Ton Panier</h2>
 
-                <div id="detailPanier"></div>
                 <div id="liste_panier"></div>
 
-                <!-- FORMULAIRE -->
-                <div class="droite">
+
+                <div id="bloc_form_resume">
+                    <!-- FORMULAIRE -->
                     <div class="box">
                         <form>
                             <h2 class="formulaire">Formulaire</h2>
 
-                            <div class="inputBox">
-                                <input type="text" name="name" required="">
-                                <label>Nom & Prénom</label>
-                            </div>
-                            <div class="inputBox">
-                                <input type="text" name="email" required="">
-                                <label>E-mail</label>
-                            </div>
-                            <div class="inputBox">
-                                <input type="text" name="text" required="">
-                                <label>Adresse, numéro et rue</label>
-                            </div>
-                            <div class="inputBox">
-                                <input type="text" name="text" required="">
-                                <label>Ville et code postal</label>
-                            </div>
+                            <fieldset>
+                                <legend>Civilité</legend>
+                                <div class="form__group">
+                                    <div class="form__group">
+                                        <label for="firstName">Prénom : </label>
+                                        <input type="text" id="firstName" class="form-control input-control" required name="formPrenom">
+                                    </div>
+                                    <div class="form__group">
+                                        <label for="lastName" class="right-inline">Nom :</label>
+                                        <input type="text" id="lastName" class="form-control input-control" required name="formNom">
+                                    </div>
+                                </div>
+                            </fieldset> 
+                            <fieldset>
+                                <legend>Coordonnées</legend>
+                                <div class="form__group">
+                                    <label for="address">Adresse :</label>
+                                    <input type="text" id="address" class="form-control input-control" required name="formAdresse">
+                                </div>
+                                <div class="form__group">
+                                    <label for="city">Ville :</label>
+                                    <input type="text" id="city" class="form-control input-control" required name="formVille">
+                                </div>
+                                <div class="form__group">
+                                    <label for="email">E-mail :</label>
+                                    <input type="email" id="email" class="form-control input-control" required name="formMail">
+                                </div>
+                            </fieldset> 
                         </form>
                     </div>
-             <!-- FORMULAIRE END -->
-                    <div class="resume_panier">
-                        <h4 class="total_price">Montant total de la commande : </h4> 
-                        <button class="btn_nav"><a href="index.html">Continuer mes achats</a></button>
-                        <button class="btn_nav"><a href="confirmation.html">Valider ma commande</a></button>
+                    <!-- FORMULAIRE END -->
+
+                    <div id="resume_panier">
+                        <h4 id="total_price"></h4> 
+                        <div class="remove_panier">Vider le panier
+                            <button class="vide_panier fas fa-trash-alt" href="#"></button>
+                        </div>
+                        <div class="btn">
+                            <button class="btn_nav"><a href="index.html">Continuer mes achats</a></button>
+                            <button class="btn_nav" id="bouton_envoi"><a href="#">Valider ma commande</a></button>
+                        </div>
                     </div>
                 </div>
                 

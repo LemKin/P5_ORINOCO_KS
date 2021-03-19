@@ -6,33 +6,6 @@ const afficherProduit = (produit) => {
   //console.log(produit.description);
   //console.log("---");
 
-  /*
-    const container = document.createElement("div");
-    container.className = "container";
-    const listeProduits = document.querySelector("#liste_produits");
-    listeProduits.append(container);
-
-    const card = document.createElement("div");
-    card.className = "card";
-    container.append(card);
-
-    const imgBx = document.createElement("div");
-    imgBx.className = "imgBx";
-    card.append(imgBx);
-
-    const contentBx = document.createElement("div");
-    contentBx.className = "contentBx";
-    card.append(contentBx);
-
-    const img = document.createElement("img");
-    img.src = produit.imageUrl;
-    imgBx.append(img);
-
-    const object = document.createElement("h2");
-    object.className = produit.name;
-    container.append(object);
-*/
-
   // <a href="produit.html?detailProduit=${produit._id}"></a>
 
   const container = document.createElement("div");
@@ -63,8 +36,6 @@ const afficherProduit = (produit) => {
   document.getElementById("liste_produits").append(container);
 };
 
-
-
 /* PRODUIT */
 
 const detailProduit = (produit) => {
@@ -88,7 +59,9 @@ const detailProduit = (produit) => {
   const container = document.createElement("div");
   container.innerHTML = `<div class="container">
                             <div class="card">
-                            <div class="imgBx"><img src="${produit.imageUrl}"></div>
+                            <div class="imgBx"><img src="${
+                              produit.imageUrl
+                            }"></div>
 
                                 <div class="contentBx">
 
@@ -98,7 +71,9 @@ const detailProduit = (produit) => {
                                         <p class="description">${
                                           produit.description
                                         }</p>
-                                        <span>${monnaie(produit.price / 100)}</span>
+                                        <span>${monnaie(
+                                          produit.price / 100
+                                        )}</span>
                                     </div>
                                 </form>
                                 </div>
@@ -115,71 +90,47 @@ const detailProduit = (produit) => {
                                 </div>
                                 <div class="option_C">
                                     <label class="title_label">Total : </label>
-                                    <text id="total">${monnaie(produit.price / 100)}</text>
+                                    <text id="total">${monnaie(
+                                      produit.price / 100
+                                    )}</text>
                                 </div>
                             </div>
 
                             <button class="buttonCmd" id="btnPanier">
-                              <a href="produit.html?detailProduit=${produit._id}">Ajouter au panier</a>
+                              <a href="produit.html?detailProduit=${
+                                produit._id
+                              }">Ajouter au panier</a>
                             </button>
                             
                         </div>`;
-        document.getElementById("detailProduit").append(container);
-        document.querySelector("#selectQte").addEventListener("change", (event) => {
-            document.querySelector("#total").innerHTML = monnaie(
-            (event.target.value * produit.price) / 100
-            );
-        });
-        document.querySelector("#btnPanier").addEventListener("click", (event) => {
-            event.preventDefault()
-            console.log(produit);
-            //localStorage.setItem('panier',JSON.stringify(produit));
+  document.getElementById("detailProduit").append(container);
+  document.querySelector("#selectQte").addEventListener("change", (event) => {
+    document.querySelector("#total").innerHTML = monnaie(
+      (event.target.value * produit.price) / 100
+    );
+  });
+  document.querySelector("#btnPanier").addEventListener("click", (event) => {
+    event.preventDefault();
+    console.log(produit);
+    //localStorage.setItem('panier',JSON.stringify(produit));
 
-            const panier = getPanier();
+    const panier = getPanier();
 
-            const produitPanier = {
-              ...produit,
-              couleur : document.querySelector("#selectColor").value,
-              quantite : document.querySelector("#selectQte").value
-            }
+    const produitPanier = {
+      ...produit,
+      couleur: document.querySelector("#selectColor").value,
+      quantite: document.querySelector("#selectQte").value,
+    };
 
-            panier.push(produitPanier);
-            console.log(panier);
+    panier.push(produitPanier);
+    console.log(panier);
 
-            setPanier(panier);
+    setPanier(panier);
 
+    //redirection
+    document.location.href = "panier.html";
 
-            //redirection
-            document.location.href="panier.html"; 
-            
-
-
-            //localStorage.setItem("panier",JSON.parse(localStorage.getItem('panier')));
-            //console.log("nb_ligne(s)_panier");
-            //localStorage.getItem("panier",JSON.stringify(localStorage.setItem('panier')));
-
-
-            /*let produit = JSON.stringify(detailProduit);
-            window.localStorage.setItem('detailProduit', produit);
-            let test = JSON.parse(window.localStorage.getItem('detailProduit'));*/
-            
-            
-
-            //lire la clée panier dans le localStorage
-            //parser le JSON du panier
-            //ajouter le produit sélectionné dans le tableau
-            //stringify le JSON
-            //écrit dans le localStorage - setItem
-
-            /*TEST
-            const produit = {id:"5beaacd41c9d440000a57d97"};
-            const couleur = 'Beige';
-            const quantite = 2;
-            const panier = JSON.parse(localStorage.getItem('panier'))
-            const cleProduit = `${produit.id}/${couleur}`
-            */
-
-        });
+  });
 };
 
 const monnaie = (prix) => {
@@ -191,9 +142,22 @@ const monnaie = (prix) => {
   return frCurrency;
 };
 
-
-
 /* PANIER */
+
+const afficherPanier = () => {
+  document.querySelector("#liste_panier").innerHTML = "";
+  const panier = getPanier();
+  if (panier.length >= 1) {
+    panier.forEach((produit, indexProduit) => {
+      detailPanier(produit, indexProduit);
+    });
+    calculTotal();
+  } else {
+    document.querySelector('#bloc_form_resume').innerHTML = '';
+    document.querySelector("#liste_panier").innerHTML = "<div class='msg_error'>Ton Panier est vide...</div>";
+  }
+};
+
 
 const detailPanier = (produit, indexProduit) => {
   //console.log(produit.name);
@@ -201,69 +165,97 @@ const detailPanier = (produit, indexProduit) => {
   //console.log(produit.description);
   //console.log("---");
 
-  const containerPanier = document.createElement('div');
-  containerPanier.className = 'container_panier';
+  const containerPanier = document.createElement("div");
+  containerPanier.className = "container_panier";
   const listePanier = document.querySelector("#liste_panier");
   listePanier.append(containerPanier);
 
-    const slotPanier = document.createElement('div');
-    slotPanier.className = "slot_panier";
-    containerPanier.append(slotPanier);
+  const slotPanier = document.createElement("div");
+  slotPanier.className = "slot_panier";
+  containerPanier.append(slotPanier);
 
-      const illuPanier = document.createElement('div');
-      illuPanier.className = "illu_panier";
-      slotPanier.append(illuPanier);
+  const illuPanier = document.createElement("div");
+  illuPanier.className = "illu_panier";
+  slotPanier.append(illuPanier);
 
-        const img = document.createElement('img');
-        img.src = produit.imageUrl;
-        illuPanier.append(img);
+  const img = document.createElement("img");
+  img.src = produit.imageUrl;
+  illuPanier.append(img);
 
-          const detailPanier = document.createElement('div');
-          detailPanier.className = "detail_panier";
-          slotPanier.append(detailPanier);
+  const detailPanier = document.createElement("div");
+  detailPanier.className = "detail_panier";
+  slotPanier.append(detailPanier);
 
-            const panName = document.createElement('h2');
-            panName.className = "pan_name";
-            panName.append(produit.name);
-            detailPanier.append(panName);
+  const panName = document.createElement("h2");
+  panName.className = "pan_name";
+  panName.append(produit.name);
+  detailPanier.append(panName);
 
-            const detailColor = document.createElement('div');
-            detailColor.className = "detail_color";
-            detailColor.append("Couleur : " + produit.couleur);
-            detailPanier.append(detailColor);
+  const detailColor = document.createElement("div");
+  detailColor.className = "detail_color";
+  detailColor.append("Couleur : " + produit.couleur);
+  detailPanier.append(detailColor);
 
-            const detailQte = document.createElement('div');
-            detailQte.className = "detail_qte";
-            detailQte.append("Quantité : " + produit.quantite);
-            detailPanier.append(detailQte);
+  const detailQte = document.createElement("div");
+  detailQte.className = "detail_qte";
+  detailQte.append("Quantité : " + produit.quantite);
+  detailPanier.append(detailQte);
 
-            const detailPrice = document.createElement('div');
-            detailPrice.className = "detail_price";
-            detailPrice.append("Prix : " + monnaie((produit.price / 100)*produit.quantite));
-            detailPanier.append(detailPrice);
+  const detailPrice = document.createElement("div");
+  detailPrice.className = "detail_price";
+  detailPrice.append(
+    "Prix : " + monnaie((produit.price / 100) * produit.quantite)
+  );
+  detailPanier.append(detailPrice);
 
-          const corbeille = document.createElement('a');
-          corbeille.className = "corbeille";
-          corbeille.href = "#";
-          corbeille.ariaLabel = "Supprimer l'article";
-          slotPanier.append(corbeille);
+  const corbeille = document.createElement("a");
+  corbeille.className = "corbeille";
+  corbeille.href = "#"; 
+  corbeille.ariaLabel = "Supprimer l'article";
+  slotPanier.append(corbeille);
 
-            const icone = document.createElement('i');
-            icone.className = "fas fa-trash-alt";
-            corbeille.append(icone);
+  const icone = document.createElement("i");
+  icone.className = "fas fa-trash-alt";
+  corbeille.append(icone);
 
-  corbeille.addEventListener("click", event => {
+  corbeille.addEventListener("click", (event) => {
     event.preventDefault();
-    console.log("suppresion produit", indexProduit);
     const panier = getPanier();
     panier.splice(indexProduit, 1);
     setPanier(panier);
-    document.location.reload();
-    
-  })
-
-  //remove
-  //document.querySelector("").addEventListener("click", (event) =>
+    afficherPanier();
+  });
 };
 
+//Calcul total
+const calculTotal = () => {
+  let totalPanier = 0;
+  console.log(localStorage.getItem('panier'),JSON.parse(localStorage.getItem('panier')));
+  JSON.parse(localStorage.getItem('panier')).forEach((produit)=>{
+    totalPanier += produit.price * produit.quantite / 100;
+  });
+  console.log(totalPanier);
+  document.getElementById("total_price").textContent = `Montant total de la commande : ${totalPanier},00€`;
+}
 
+
+
+
+ //Formulaire
+ const validation = (event) => {
+   event.preventDefault();
+   let isValid = true;
+   //si le champ est vide
+   let prenom = document.getElementById('firstName');
+   //let missPrenom = document.getElementById('missPrenom');
+   console.log(prenom.value);
+   if (prenom.validity.valueMissing) {
+     isValid = false;
+     console.log("Hey");
+     //missPrenom.textContent = 'Prenom manquant';
+     //missPrenom.style.color = 'red';
+   }
+   if (isValid) {
+     console.log('envoyer le message au server');
+   }
+ }
