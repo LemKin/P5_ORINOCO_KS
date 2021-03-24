@@ -146,8 +146,6 @@ main {
     color: #ffffff;
 }
 
-
-
 .container .card .contentBx .color span {
     line-height: 20px;
     font-size: 1.2em;
@@ -190,25 +188,6 @@ main {
     background: #ffffff;
     color: #263238;
     width: 100px;
-}
-
-.commande{
-    display: inline-block;
-    padding: 10px 20px;
-    background: #FCE4EC;
-    margin-top: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    color: #263238;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: 0.5s;
-}
-
-.commande:hover {
-    opacity: 1;
-    transform: translateY(-3px);
-    transition-delay: 0.75s;
 }
 
 .option {
@@ -425,6 +404,7 @@ label {
     color: #ffffff;
 }
 
+
 /*RESUME*/
 
 #resume_panier {
@@ -434,7 +414,7 @@ label {
     padding: 7px;
     width: 300px;
     border-radius: 7px;
-    border: 2px solid #263238;
+    border: 2px solid #7E57C2;
 }
 
 #total_price {
@@ -448,7 +428,6 @@ label {
 }
 
 .vide_panier {
-    position: relative;
     padding: 7px;
     background: #263238;
     color: #ffffff;
@@ -495,4 +474,57 @@ label {
     background: #7E57C2;
     opacity: 0.5;
     text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media all and (max-width: 800px){
+
+    body {
+        width: auto;
+    }
+
+    .logo img {
+        width: 170px;
+    }
+
+    .container {
+        padding: 0px;
+        padding: 10px 0px 10px 0px;
+    }
+
+    .container .card {
+        width: 300px;
+        height: 210px;
+    }
+
+    .imgBx > img {
+        margin-top: -120px;
+    }
+
+    .option {
+        width: 304px;
+        height: 90px;
+        flex-direction: column;
+    }
+
+    .option_A {
+        justify-content: flex-start;
+    }
+
+    #bloc_form_resume {
+        position: relative;
+        flex-direction: row;
+        margin-left: 0px;
+        flex-direction: column;
+        margin-top: -150px;
+    }
+
+    .formulaire {
+        margin-top: 0px;
+    }
+
+    .container_panier {
+        margin-left: 0px;
+    }
 }

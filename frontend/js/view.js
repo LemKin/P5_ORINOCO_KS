@@ -1,13 +1,7 @@
-/* CATALOGUE */
+/* --------- PAGE CATALOGUE --------- */
 
+//compo de la liste de la page catalogue
 const afficherProduit = (produit) => {
-  //console.log(produit.name);
-  //console.log(produit.price);
-  //console.log(produit.description);
-  //console.log("---");
-
-  // <a href="produit.html?detailProduit=${produit._id}"></a>
-
   const container = document.createElement("div");
   container.innerHTML = `<div class="container">
                             <a href="produit.html?detailProduit=${
@@ -36,7 +30,8 @@ const afficherProduit = (produit) => {
   document.getElementById("liste_produits").append(container);
 };
 
-/* PRODUIT */
+
+/* --------- PAGE PRODUIT --------- */
 
 const detailProduit = (produit) => {
   //console.log(produit.name);
@@ -46,16 +41,15 @@ const detailProduit = (produit) => {
 
   document.title = produit.name;
 
+  //option couleur du produit
   let optionColor = "";
   produit.colors.forEach((color) => {
     optionColor = optionColor + `<option value="${color}">${color}</option>`;
   });
-  //toto = 1
-  //toto = toto+2
-  //toto = 3
 
   let selectQte = 1;
 
+  //compo de la page produit
   const container = document.createElement("div");
   container.innerHTML = `<div class="container">
                             <div class="card">
@@ -109,10 +103,10 @@ const detailProduit = (produit) => {
       (event.target.value * produit.price) / 100
     );
   });
+  //bouton ajout panier
   document.querySelector("#btnPanier").addEventListener("click", (event) => {
     event.preventDefault();
     console.log(produit);
-    //localStorage.setItem('panier',JSON.stringify(produit));
 
     const panier = getPanier();
 
@@ -133,6 +127,7 @@ const detailProduit = (produit) => {
   });
 };
 
+//format monétaire international
 const monnaie = (prix) => {
   const frCurrencyFormat = new Intl.NumberFormat("fr-FR", {
     style: "currency",
@@ -142,7 +137,8 @@ const monnaie = (prix) => {
   return frCurrency;
 };
 
-/* PANIER */
+
+/* --------- PAGE PANIER --------- */
 
 const afficherPanier = () => {
   document.querySelector("#liste_panier").innerHTML = "";
@@ -153,7 +149,9 @@ const afficherPanier = () => {
     });
     calculTotal();
   } else {
+    //masquer le formulaire et le résumé si le panier est vide
     document.querySelector('#bloc_form_resume').innerHTML = '';
+    //afficher message panier vide
     document.querySelector("#liste_panier").innerHTML = "<div class='msg_error'>Ton Panier est vide...</div>";
   }
 };
@@ -165,6 +163,7 @@ const detailPanier = (produit, indexProduit) => {
   //console.log(produit.description);
   //console.log("---");
 
+  //compo liste sélect. dans le panier
   const containerPanier = document.createElement("div");
   containerPanier.className = "container_panier";
   const listePanier = document.querySelector("#liste_panier");
@@ -218,6 +217,7 @@ const detailPanier = (produit, indexProduit) => {
   icone.className = "fas fa-trash-alt";
   corbeille.append(icone);
 
+  //suppression produit
   corbeille.addEventListener("click", (event) => {
     event.preventDefault();
     const panier = getPanier();
@@ -232,30 +232,60 @@ const calculTotal = () => {
   let totalPanier = 0;
   console.log(localStorage.getItem('panier'),JSON.parse(localStorage.getItem('panier')));
   JSON.parse(localStorage.getItem('panier')).forEach((produit)=>{
-    totalPanier += produit.price * produit.quantite / 100;
+    monnaie(totalPanier += produit.price * produit.quantite / 100);
   });
-  console.log(totalPanier);
   document.getElementById("total_price").textContent = `Montant total de la commande : ${totalPanier},00€`;
-}
-
-
-
+} 
 
  //Formulaire
  const validation = (event) => {
    event.preventDefault();
    let isValid = true;
+   //PRÉNOM
    //si le champ est vide
    let prenom = document.getElementById('firstName');
-   //let missPrenom = document.getElementById('missPrenom');
    console.log(prenom.value);
    if (prenom.validity.valueMissing) {
      isValid = false;
-     console.log("Hey");
-     //missPrenom.textContent = 'Prenom manquant';
-     //missPrenom.style.color = 'red';
    }
+
+   //NOM
+   //si le champ est vide
+   let nom = document.getElementById('lastName');
+   console.log(nom.value);
+   if (nom.validity.valueMissing) {
+     isValid = false;
+   }
+
+   //ADRESSE
+   //si le champ est vide
+   let addresse = document.getElementById('address');
+   console.log(addresse.value);
+   if (addresse.validity.valueMissing) {
+     isValid = false;
+   }
+
+   //VILLE
+   //si le champ est vide
+   let ville = document.getElementById('city');
+   console.log(ville.value);
+   if (ville.validity.valueMissing) {
+     isValid = false;
+   }
+
+   //MAIL
+   //si le champ est vide
+   let mail = document.getElementById('email');
+   console.log(mail.value);
+   if (mail.validity.valueMissing) {
+     isValid = false;
+   }
+
+   //condition pour toutes les saisies
    if (isValid) {
      console.log('envoyer le message au server');
    }
  }
+
+
+ /* --------- PAGE CONFIRMATION --------- */

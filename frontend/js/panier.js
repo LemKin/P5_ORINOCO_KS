@@ -6,8 +6,9 @@ const chargerPanier = async () => {
                 viderPanier();
                 afficherPanier();
         })
-        let formValid = document.getElementById('bouton_envoi');
-        formValid.addEventListener('click', validation);
+        //bouton "valider ma commande"
+        let form = document.getElementById('form_panier');
+        form.addEventListener('submit', validation); //écoute de l'évènement de soumission du formulaire
 }
 
 chargerPanier();
