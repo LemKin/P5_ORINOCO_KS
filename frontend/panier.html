@@ -36,6 +36,7 @@
                                         <div class="form__group">
                                             <label for="firstName">Prénom : </label>
                                             <input type="text" id="firstName" class="form-control input-control" required name="formPrenom" pattern="[\p{L}\s\-']+">
+                                            
                                         </div>
                                         <div class="form__group">
                                             <label for="lastName">Nom :</label>
@@ -47,7 +48,7 @@
                                     <legend>Coordonnées</legend>
                                     <div class="form__group">
                                         <label for="address">Adresse :</label>
-                                        <input type="text" id="address" class="form-control input-control" required name="formAdresse" pattern="[\p{L}\s']+">
+                                        <input type="text" id="address" class="form-control input-control" required name="formAdresse" pattern="[0-9]*) ?([a-zA-Z,\. ]*) ?([0-9]{5}) ?([a-zA-Z]*">
                                     </div>
                                     <div class="form__group">
                                         <label for="city">Ville :</label>

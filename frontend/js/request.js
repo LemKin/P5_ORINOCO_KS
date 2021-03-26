@@ -23,3 +23,4 @@ const setPanier = (panier) => {
 const viderPanier = () => {
     localStorage.removeItem('panier');
 }
+

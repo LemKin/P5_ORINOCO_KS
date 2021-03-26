@@ -241,8 +241,8 @@ const calculTotal = () => {
  const validation = (event) => {
    event.preventDefault();
    let isValid = true;
+
    //PRÉNOM
-   //si le champ est vide
    let prenom = document.getElementById('firstName');
    console.log(prenom.value);
    if (prenom.validity.valueMissing) {
@@ -250,7 +250,6 @@ const calculTotal = () => {
    }
 
    //NOM
-   //si le champ est vide
    let nom = document.getElementById('lastName');
    console.log(nom.value);
    if (nom.validity.valueMissing) {
@@ -258,7 +257,6 @@ const calculTotal = () => {
    }
 
    //ADRESSE
-   //si le champ est vide
    let addresse = document.getElementById('address');
    console.log(addresse.value);
    if (addresse.validity.valueMissing) {
@@ -266,7 +264,6 @@ const calculTotal = () => {
    }
 
    //VILLE
-   //si le champ est vide
    let ville = document.getElementById('city');
    console.log(ville.value);
    if (ville.validity.valueMissing) {
@@ -274,16 +271,32 @@ const calculTotal = () => {
    }
 
    //MAIL
-   //si le champ est vide
    let mail = document.getElementById('email');
    console.log(mail.value);
    if (mail.validity.valueMissing) {
      isValid = false;
    }
 
+/*const contact = {
+  firstName: prenom.value,
+  lastName //...
+}
+let product = [];//id de la cmd
+forEach {
+  products.push()
+}
+const order = {
+  contact: contact, 
+  products: products
+}*/
+
    //condition pour toutes les saisies
    if (isValid) {
      console.log('envoyer le message au server');
+     const request = new XMLHttpRequest();
+     request.open("POST", "confirmation.html"); //POST pour envoyer les données au server
+     request.setRequestHeader("Content-Type", "application/json"); //header > prévenir le server qu'il va recevoir du JSON
+     request.send(JSON.stringify(validation)); //transformer l'objet JS en JSON
    }
  }
 
