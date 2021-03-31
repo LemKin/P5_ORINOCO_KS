@@ -1,5 +1,5 @@
-const request = async (url) => {
-        let response = await fetch(url);
+const request = async (url, init) => {
+        let response = await fetch(url, init);
         if (!response.ok) {
             throw new Error(response.statusText)
         }

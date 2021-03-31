@@ -35,12 +35,12 @@
                                     <div class="form__group">
                                         <div class="form__group">
                                             <label for="firstName">Prénom : </label>
-                                            <input type="text" id="firstName" class="form-control input-control" required name="formPrenom" pattern="[\p{L}\s\-']+">
+                                            <input type="text" title="Pas d'espace, de chiffre ou de caractères spécifiques" id="firstName" class="form-control input-control" required name="formPrenom" pattern="[\p{L}\-']+">
                                             
                                         </div>
                                         <div class="form__group">
                                             <label for="lastName">Nom :</label>
-                                            <input type="text" id="lastName" class="form-control input-control" required name="formNom" pattern="[\p{L}\s']+">
+                                            <input type="text" title="Pas d'espace, de chiffre ou de caractères spécifiques" id="lastName" class="form-control input-control" required name="formNom" pattern="[\p{L}\-']+">
                                         </div>
                                     </div>
                                 </fieldset> 
@@ -48,11 +48,11 @@
                                     <legend>Coordonnées</legend>
                                     <div class="form__group">
                                         <label for="address">Adresse :</label>
-                                        <input type="text" id="address" class="form-control input-control" required name="formAdresse" pattern="[0-9]*) ?([a-zA-Z,\. ]*) ?([0-9]{5}) ?([a-zA-Z]*">
+                                        <input type="text" title="Pas de caractères spécifiques" id="address" class="form-control input-control" required name="formAdresse">
                                     </div>
                                     <div class="form__group">
                                         <label for="city">Ville :</label>
-                                        <input type="text" id="city" class="form-control input-control" required name="formVille" pattern="[\p{L}\s']+">
+                                        <input type="text" title="Pas de chiffre ou de caractères spécifiques" id="city" class="form-control input-control" required name="formVille" pattern="[\p{L}\s']+">
                                     </div>
                                     <div class="form__group">
                                         <label for="email">E-mail :</label>

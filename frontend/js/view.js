@@ -230,15 +230,15 @@ const detailPanier = (produit, indexProduit) => {
 //Calcul total
 const calculTotal = () => {
   let totalPanier = 0;
-  console.log(localStorage.getItem('panier'),JSON.parse(localStorage.getItem('panier')));
-  JSON.parse(localStorage.getItem('panier')).forEach((produit)=>{
-    monnaie(totalPanier += produit.price * produit.quantite / 100);
+  //console.log(localStorage.getItem('panier'),JSON.parse(localStorage.getItem('panier')));
+  getPanier().forEach((produit)=>{
+    totalPanier += produit.price * produit.quantite / 100;
   });
   document.getElementById("total_price").textContent = `Montant total de la commande : ${totalPanier},00€`;
 } 
 
  //Formulaire
- const validation = (event) => {
+ const validation = async (event) => {
    event.preventDefault();
    let isValid = true;
 
@@ -277,28 +277,53 @@ const calculTotal = () => {
      isValid = false;
    }
 
-/*const contact = {
-  firstName: prenom.value,
-  lastName //...
-}
-let product = [];//id de la cmd
-forEach {
-  products.push()
-}
-const order = {
-  contact: contact, 
-  products: products
-}*/
+   if (!isValid) return //si c'est pas valide interruption de la fonction
 
-   //condition pour toutes les saisies
-   if (isValid) {
-     console.log('envoyer le message au server');
-     const request = new XMLHttpRequest();
-     request.open("POST", "confirmation.html"); //POST pour envoyer les données au server
-     request.setRequestHeader("Content-Type", "application/json"); //header > prévenir le server qu'il va recevoir du JSON
-     request.send(JSON.stringify(validation)); //transformer l'objet JS en JSON
-   }
- }
+const contact = {
+  firstName: prenom.value,
+  lastName: nom.value,
+  address: addresse.value,
+  city: ville.value,
+  email: mail.value
+}
+const products = getPanier().map( (produit) => {
+  return produit._id;
+});//les id de la cmd
+
+const order = {
+  contact,
+  products
+}
+
+const {
+  orderId
+} = await request("http://localhost:3000/api/teddies/order", {
+  method: "POST",
+  body: JSON.stringify(order),
+  headers: {
+    'Content-Type': "application/json"//on dit au server : le body = JSON
+  }
+})
+localStorage.setItem('orderId', orderId);
+    //redirection
+    document.location.href = "confirmation.html";
+}
 
 
  /* --------- PAGE CONFIRMATION --------- */
+
+ const resultOrder = () => {
+  const container = document.createElement("div");
+  container.innerHTML = ` <div class="confirm">
+                            <div class="congrat">
+                                <h2 class="order-confirm_card_resume_congrat">Merci pour ton achat <span id="lastName"></span></h2>
+                            </div>
+                            <div class="recap">
+                                <h4 class="total_price_confirm">Montant total de la commande : </h4> 
+                                <div class="order-confirm_card_resume_info">
+                                    <p>Numéro de commande : </p><span id="orderId"></span></p>
+                                </div>
+                            </div>
+                          </div>`;
+document.getElementById("confirmCmd").append(container);
+}
