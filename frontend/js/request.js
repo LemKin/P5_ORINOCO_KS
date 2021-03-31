@@ -24,3 +24,7 @@ const viderPanier = () => {
     localStorage.removeItem('panier');
 }
 
+const getOrder = () => {
+    let order = localStorage.getItem('orderId');
+    return order;
+  }

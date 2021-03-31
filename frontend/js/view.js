@@ -30,7 +30,6 @@ const afficherProduit = (produit) => {
   document.getElementById("liste_produits").append(container);
 };
 
-
 /* --------- PAGE PRODUIT --------- */
 
 const detailProduit = (produit) => {
@@ -39,6 +38,7 @@ const detailProduit = (produit) => {
   //console.log(produit.description);
   //console.log("---");
 
+  //l'onglet de la page prend le nom du produit sélectionné
   document.title = produit.name;
 
   //option couleur du produit
@@ -123,7 +123,6 @@ const detailProduit = (produit) => {
 
     //redirection
     document.location.href = "panier.html";
-
   });
 };
 
@@ -137,7 +136,6 @@ const monnaie = (prix) => {
   return frCurrency;
 };
 
-
 /* --------- PAGE PANIER --------- */
 
 const afficherPanier = () => {
@@ -150,12 +148,12 @@ const afficherPanier = () => {
     calculTotal();
   } else {
     //masquer le formulaire et le résumé si le panier est vide
-    document.querySelector('#bloc_form_resume').innerHTML = '';
+    document.querySelector("#bloc_form_resume").innerHTML = "";
     //afficher message panier vide
-    document.querySelector("#liste_panier").innerHTML = "<div class='msg_error'>Ton Panier est vide...</div>";
+    document.querySelector("#liste_panier").innerHTML =
+      "<div class='msg_error'>Ton Panier est vide...</div>";
   }
 };
-
 
 const detailPanier = (produit, indexProduit) => {
   //console.log(produit.name);
@@ -209,7 +207,7 @@ const detailPanier = (produit, indexProduit) => {
 
   const corbeille = document.createElement("a");
   corbeille.className = "corbeille";
-  corbeille.href = "#"; 
+  corbeille.href = "#";
   corbeille.ariaLabel = "Supprimer l'article";
   slotPanier.append(corbeille);
 
@@ -231,99 +229,92 @@ const detailPanier = (produit, indexProduit) => {
 const calculTotal = () => {
   let totalPanier = 0;
   //console.log(localStorage.getItem('panier'),JSON.parse(localStorage.getItem('panier')));
-  getPanier().forEach((produit)=>{
-    totalPanier += produit.price * produit.quantite / 100;
+  getPanier().forEach((produit) => {
+    totalPanier += (produit.price * produit.quantite) / 100;
   });
-  document.getElementById("total_price").textContent = `Montant total de la commande : ${totalPanier},00€`;
-} 
+  document.getElementById(
+    "total_price"
+  ).textContent = `Montant total de la commande : ${monnaie(totalPanier)}`;
+};
 
- //Formulaire
- const validation = async (event) => {
-   event.preventDefault();
-   let isValid = true;
+//Formulaire
+const validation = async (event) => {
+  event.preventDefault();
+  let isValid = true;
 
-   //PRÉNOM
-   let prenom = document.getElementById('firstName');
-   console.log(prenom.value);
-   if (prenom.validity.valueMissing) {
-     isValid = false;
-   }
-
-   //NOM
-   let nom = document.getElementById('lastName');
-   console.log(nom.value);
-   if (nom.validity.valueMissing) {
-     isValid = false;
-   }
-
-   //ADRESSE
-   let addresse = document.getElementById('address');
-   console.log(addresse.value);
-   if (addresse.validity.valueMissing) {
-     isValid = false;
-   }
-
-   //VILLE
-   let ville = document.getElementById('city');
-   console.log(ville.value);
-   if (ville.validity.valueMissing) {
-     isValid = false;
-   }
-
-   //MAIL
-   let mail = document.getElementById('email');
-   console.log(mail.value);
-   if (mail.validity.valueMissing) {
-     isValid = false;
-   }
-
-   if (!isValid) return //si c'est pas valide interruption de la fonction
-
-const contact = {
-  firstName: prenom.value,
-  lastName: nom.value,
-  address: addresse.value,
-  city: ville.value,
-  email: mail.value
-}
-const products = getPanier().map( (produit) => {
-  return produit._id;
-});//les id de la cmd
-
-const order = {
-  contact,
-  products
-}
-
-const {
-  orderId
-} = await request("http://localhost:3000/api/teddies/order", {
-  method: "POST",
-  body: JSON.stringify(order),
-  headers: {
-    'Content-Type': "application/json"//on dit au server : le body = JSON
+  //PRÉNOM
+  let prenom = document.getElementById("firstName");
+  console.log(prenom.value);
+  if (prenom.validity.valueMissing) {
+    isValid = false;
   }
-})
-localStorage.setItem('orderId', orderId);
-    //redirection
-    document.location.href = "confirmation.html";
-}
 
+  //NOM
+  let nom = document.getElementById("lastName");
+  console.log(nom.value);
+  if (nom.validity.valueMissing) {
+    isValid = false;
+  }
 
- /* --------- PAGE CONFIRMATION --------- */
+  //ADRESSE
+  let addresse = document.getElementById("address");
+  console.log(addresse.value);
+  if (addresse.validity.valueMissing) {
+    isValid = false;
+  }
 
- const resultOrder = () => {
-  const container = document.createElement("div");
-  container.innerHTML = ` <div class="confirm">
-                            <div class="congrat">
-                                <h2 class="order-confirm_card_resume_congrat">Merci pour ton achat <span id="lastName"></span></h2>
-                            </div>
-                            <div class="recap">
-                                <h4 class="total_price_confirm">Montant total de la commande : </h4> 
-                                <div class="order-confirm_card_resume_info">
-                                    <p>Numéro de commande : </p><span id="orderId"></span></p>
-                                </div>
-                            </div>
-                          </div>`;
-document.getElementById("confirmCmd").append(container);
-}
+  //VILLE
+  let ville = document.getElementById("city");
+  console.log(ville.value);
+  if (ville.validity.valueMissing) {
+    isValid = false;
+  }
+
+  //MAIL
+  let mail = document.getElementById("email");
+  console.log(mail.value);
+  if (mail.validity.valueMissing) {
+    isValid = false;
+  }
+
+  if (!isValid) return; //si c'est pas valide interruption de la fonction
+
+  const contact = {
+    firstName: prenom.value,
+    lastName: nom.value,
+    address: addresse.value,
+    city: ville.value,
+    email: mail.value,
+  };
+  const products = getPanier().map((produit) => {
+    return produit._id;
+  }); //les id de la cmd
+
+  const order = {
+    contact,
+    products,
+  };
+
+  const { orderId } = await request("http://localhost:3000/api/teddies/order", {
+    method: "POST",
+    body: JSON.stringify(order),
+    headers: {
+      "Content-Type": "application/json", //on dit au server : le body = JSON
+    },
+  });
+  localStorage.setItem("orderId", orderId);
+
+  //redirection page confirmation
+  document.location.href = "confirmation.html";
+};
+
+/* --------- PAGE CONFIRMATION --------- */
+
+const resultOrder = () => {
+  const orderId = getOrder();
+  document.getElementById("orderId").append(orderId);
+  calculTotal();
+
+  //pour supprimer le contenu du localStorage
+  localStorage.clear();
+};
