@@ -311,7 +311,7 @@ const validation = async (event) => {
 /* --------- PAGE CONFIRMATION --------- */
 
 const resultOrder = () => {
-  //commande ok, message 
+  //Commande ok, message de remerciement
   if (localStorage.getItem("orderId") != null) {
     const orderId = getOrder();
     document.getElementById("orderId").append(orderId);
@@ -332,7 +332,6 @@ const resultOrder = () => {
       window.location = "index.html";
     }, 5000);
   }
-
   //pour supprimer le contenu du localStorage
   localStorage.clear();
 };
