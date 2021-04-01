@@ -457,7 +457,7 @@ label {
 
 /*CONFIRMATION*/
 
-.confirm {
+#confirm {
     display: flex;
     flex-direction: column;
     border-radius: 5px;
@@ -474,6 +474,18 @@ label {
     background: #7E57C2;
     opacity: 0.5;
     text-align: center;
+}
+
+#confirmation_commande {
+    background-color: #263238;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: -50px;
+}
+
+.order-confirm_card_resume_info {
+    padding: 10px;
 }
 
 /* RESPONSIVE */

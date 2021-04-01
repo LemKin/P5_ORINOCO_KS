@@ -311,9 +311,27 @@ const validation = async (event) => {
 /* --------- PAGE CONFIRMATION --------- */
 
 const resultOrder = () => {
-  const orderId = getOrder();
-  document.getElementById("orderId").append(orderId);
-  calculTotal();
+  //commande ok, message 
+  if (localStorage.getItem("orderId") != null) {
+    const orderId = getOrder();
+    document.getElementById("orderId").append(orderId);
+    calculTotal();
+  } else {
+    // Retirer le message de commande si le localStorage ne contient pas l'item orderId
+    document.querySelector("#confirm").innerHTML = "";
+
+    // Afficher un message d'erreur et rediriger l'utilisateur vers la page d'accueil
+    let resultCommand = document.getElementById("confirmation_commande");
+    let resultCommandError = document.createElement("div");
+    let messageError = document.createElement("h4");
+    messageError.innerHTML =
+      "Pas de commande en cours ! <br> Redirection vers le catalogue, merci de patienter...";
+    resultCommand.appendChild(resultCommandError);
+    resultCommandError.appendChild(messageError);
+    setTimeout(function () {
+      window.location = "index.html";
+    }, 5000);
+  }
 
   //pour supprimer le contenu du localStorage
   localStorage.clear();
