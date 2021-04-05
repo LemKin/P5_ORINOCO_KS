@@ -1,7 +1,5 @@
 const confirmCommande = async () => {
-
-        resultOrder();
-
-}
+  resultOrder();
+};
 
 confirmCommande();

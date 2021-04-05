@@ -1,87 +1,86 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="shortcut icon" href="img/favicon.ico"/>
-        <script src="https://kit.fontawesome.com/50a958fe3e.js" crossorigin="anonymous"></script>
-        <title>Panier</title>
-    </head>
-
-    <body>
-        <header class="banner">
-                <a href="index.html" class="logo"><img src="img/logo_orinoco-D.png" alt="logo orinoco" /></a>
-                <nav class="menu">
-                    <a href="index.html">Produits</a>
-                    <a href="panier.html">Panier</a>
-                </nav>
-        </header>
-        <main>
-            <section>
-                <h1 class="title">Orinours</h1>
-                <h2 class="compl">Ton Panier</h2>
-
-                <div id="liste_panier"></div>
-
-                <form id="form_panier">
-                    <div id="bloc_form_resume">
-                        <!-- FORMULAIRE -->
-                        <div class="box">
-                                <h2 class="formulaire">Formulaire</h2>
-                                <fieldset>
-                                    <legend>Civilité</legend>
-                                    <div class="form__group">
-                                        <div class="form__group">
-                                            <label for="firstName">Prénom : </label>
-                                            <input type="text" title="Pas d'espace, de chiffre ou de caractères spécifiques" id="firstName" class="form-control input-control" required name="formPrenom" pattern="[\p{L}\-']+">
-                                            
-                                        </div>
-                                        <div class="form__group">
-                                            <label for="lastName">Nom :</label>
-                                            <input type="text" title="Pas d'espace, de chiffre ou de caractères spécifiques" id="lastName" class="form-control input-control" required name="formNom" pattern="[\p{L}\-']+">
-                                        </div>
-                                    </div>
-                                </fieldset> 
-                                <fieldset>
-                                    <legend>Coordonnées</legend>
-                                    <div class="form__group">
-                                        <label for="address">Adresse :</label>
-                                        <input type="text" title="Pas de caractères spécifiques" id="address" class="form-control input-control" required name="formAdresse">
-                                    </div>
-                                    <div class="form__group">
-                                        <label for="city">Ville :</label>
-                                        <input type="text" title="Pas de chiffre ou de caractères spécifiques" id="city" class="form-control input-control" required name="formVille" pattern="[\p{L}\s']+">
-                                    </div>
-                                    <div class="form__group">
-                                        <label for="email">E-mail :</label>
-                                        <input type="email" id="email" class="form-control input-control" required name="formMail">
-                                    </div>
-                                </fieldset> 
-                        </div>
-                        <!-- FORMULAIRE END -->
-
-                        <div id="resume_panier">
-                            <h4 id="total_price"></h4> 
-                            <div class="remove_panier">Vider le panier
-                                <button class="vide_panier fas fa-trash-alt" href="#"></button>
-                            </div>
-                            <div class="btn">
-                                <button class="btn_nav"><a href="index.html">Continuer mes achats</a></button>
-                                <button class="btn_nav" id="bouton_envoi" type="submit">Valider ma commande</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                
-            </section>
-        </main>
-        <!-- <footer class="banner foot"> -->
-
-        </footer>
-        <script src="js/request.js"></script>
-        <script src="js/view.js"></script>
-        <script src="js/panier.js"></script>
-    </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="shortcut icon" href="img/favicon.ico"/>
+		<script src="https://kit.fontawesome.com/50a958fe3e.js" crossorigin="anonymous"></script>
+		<title>Panier</title>
+	</head>
+	<body>
+		<header class="banner">
+			<a href="index.html" class="logo"><img src="img/logo_orinoco-D.png" alt="logo orinoco" /></a>
+			<nav class="menu">
+				<a href="index.html">Produits</a>
+				<a href="panier.html">Panier</a>
+			</nav>
+		</header>
+		<main>
+			<section>
+				<h1 class="title">Orinours</h1>
+				<h2 class="compl">Ton Panier</h2>
+				<div id="liste_panier"></div>
+				<form id="form_panier">
+					<div id="bloc_form_resume">
+						<!-- FORMULAIRE -->
+						<div class="box">
+							<h2 class="formulaire">Formulaire</h2>
+							<fieldset>
+								<legend>
+									Civilité
+								</legend>
+								<div class="form__group">
+									<div class="form__group">
+										<label for="firstName">Prénom : </label>
+										<input type="text" title="Pas d'espace, de chiffre ou de caractères spécifiques" id="firstName" class="form-control input-control" required name="formPrenom" pattern="[\p{L}\-']+">
+									</div>
+									<div class="form__group">
+										<label for="lastName">Nom :</label>
+										<input type="text" title="Pas d'espace, de chiffre ou de caractères spécifiques" id="lastName" class="form-control input-control" required name="formNom" pattern="[\p{L}\-']+">
+									</div>
+								</div>
+							</fieldset>
+							<fieldset>
+								<legend>
+									Coordonnées
+								</legend>
+								<div class="form__group">
+									<label for="address">Adresse :</label>
+									<input type="text" title="Pas de caractères spécifiques" id="address" class="form-control input-control" required name="formAdresse">
+								</div>
+								<div class="form__group">
+									<label for="city">Ville :</label>
+									<input type="text" title="Pas de chiffre ou de caractères spécifiques" id="city" class="form-control input-control" required name="formVille" pattern="[\p{L}\s']+">
+								</div>
+								<div class="form__group">
+									<label for="email">E-mail :</label>
+									<input type="email" id="email" class="form-control input-control" required name="formMail">
+								</div>
+							</fieldset>
+						</div>
+						<!-- FORMULAIRE END -->
+						<div id="resume_panier">
+							<h4 id="total_price"></h4>
+							<div class="remove_panier">
+								Vider le panier
+								<button class="vide_panier fas fa-trash-alt" href="#"></button>
+							</div>
+							<div class="btn">
+								<button class="btn_nav"><a href="index.html">Continuer mes achats</a></button>
+								<button class="btn_nav" id="bouton_envoi" type="submit">Valider ma commande</button>
+							</div>
+						</div>
+					</div>
+				</form>
+			</section>
+		</main>
+		<!-- 
+		<footer class="banner foot">
+			 -->
+		</footer>
+		<script src="js/request.js"></script>
+		<script src="js/view.js"></script>
+		<script src="js/panier.js"></script>
+	</body>
 </html>

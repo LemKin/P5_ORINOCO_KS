@@ -33,10 +33,6 @@ const afficherProduit = (produit) => {
 /* --------- PAGE PRODUIT --------- */
 
 const detailProduit = (produit) => {
-  //console.log(produit.name);
-  //console.log(produit.price);
-  //console.log(produit.description);
-  //console.log("---");
 
   //l'onglet de la page prend le nom du produit sélectionné
   document.title = produit.name;
@@ -320,7 +316,7 @@ const resultOrder = () => {
     // Retirer le message de commande si le localStorage ne contient pas l'item orderId
     document.querySelector("#confirm").innerHTML = "";
 
-    // Afficher un message d'erreur et rediriger l'utilisateur vers la page d'accueil
+    // Afficher un message d'erreur et redirection page d'accueil (5sec.)
     let resultCommand = document.getElementById("confirmation_commande");
     let resultCommandError = document.createElement("div");
     let messageError = document.createElement("h4");
@@ -332,6 +328,6 @@ const resultOrder = () => {
       window.location = "index.html";
     }, 5000);
   }
-  //pour supprimer le contenu du localStorage
+  //Supprimer le contenu du localStorage
   localStorage.clear();
 };

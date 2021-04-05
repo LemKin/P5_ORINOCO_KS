@@ -1,52 +1,50 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="shortcut icon" href="img/favicon.ico"/>
-        <script src="https://kit.fontawesome.com/50a958fe3e.js" crossorigin="anonymous"></script>
-        <title>Confirmation</title>
-    </head>
-
-    <body>
-        <header class="banner">
-                <a href="index.html" class="logo"><img src="img/logo_orinoco-D.png" alt="logo orinoco" /></a>
-                <nav class="menu">
-                    <a href="index.html">Produits</a>
-                    <a href="panier.html">Panier</a>
-                </nav>
-        </header>
-        <main>
-            <section>
-                <h1 class="title">Orinours</h1>
-                <h2 class="compl">Confirmation de commande</h2>
-
-                
-                <div id="confirm">
-                    <div class="congrat">
-                        <h2 class="order-confirm_card_resume_congrat">Merci pour ton achat</h2>
-                    </div>
-                    <div class="recap">
-                        <h4 id="total_price"></h4>
-                        <div class="order-confirm_card_resume_info">
-                            <p>Numéro de commande : </p> <p><span id="orderId"></span></p>
-                        </div>
-                    </div>
-                    <div class="btn">
-                        <button class="btn_nav"><a href="index.html">Retour à l'accueil</a></button>
-                    </div>
-                </div>
-                <div id="confirmation_commande"></div>
-            </section>
-        </main>
-        <footer class="banner foot">
-
-        </footer>
-        <script src="js/request.js"></script>
-        <script src="js/view.js"></script>
-        <script src="js/confirmation.js"></script>
-
-    </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="shortcut icon" href="img/favicon.ico"/>
+		<script src="https://kit.fontawesome.com/50a958fe3e.js" crossorigin="anonymous"></script>
+		<title>Confirmation</title>
+	</head>
+	<body>
+		<header class="banner">
+			<a href="index.html" class="logo"><img src="img/logo_orinoco-D.png" alt="logo orinoco" /></a>
+			<nav class="menu">
+				<a href="index.html">Produits</a>
+				<a href="panier.html">Panier</a>
+			</nav>
+		</header>
+		<main>
+			<section>
+				<h1 class="title">Orinours</h1>
+				<h2 class="compl">Confirmation de commande</h2>
+				<div id="confirm">
+					<div class="congrat">
+						<h2 class="order-confirm_card_resume_congrat">Merci pour ton achat</h2>
+					</div>
+					<div class="recap">
+						<h4 id="total_price"></h4>
+						<div class="order-confirm_card_resume_info">
+							<p>
+								Numéro de commande : 
+							</p>
+							<p>
+								<span id="orderId"></span>
+							</p>
+						</div>
+					</div>
+					<div class="btn">
+						<button class="btn_accueil"><a href="index.html">Retour à l'accueil</a></button>
+					</div>
+				</div>
+				<div id="confirmation_commande"></div>
+			</section>
+		</main>
+		<footer class="banner foot"></footer>
+		<script src="js/request.js"></script>
+		<script src="js/view.js"></script>
+		<script src="js/confirmation.js"></script>
+	</body>
 </html>
